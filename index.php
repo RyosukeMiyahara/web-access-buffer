@@ -10,6 +10,7 @@
 <!--<![endif]-->
 <head>
   <meta charset="UTF-8">
+  <meta name="referrer" content="no-referrer">
   <title></title>
 <?php
   if (isset($_GET['url'])) {
@@ -23,7 +24,7 @@
 <?php
   if (isset($_GET['url'])) {
 ?>
-    <a href="<?php echo $_GET['url']; ?>">遷移先へ飛ぶ</a><br>
+    <a href="<?php echo $_GET['url']; ?>" rel=noreferrer referrerpolicy="no-referrer">遷移先へ飛ぶ</a><br>
 <?php
   }
 ?>
