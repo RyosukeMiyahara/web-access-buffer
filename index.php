@@ -50,7 +50,7 @@ if (isset($_GET['url'])) {
 
 <?php
 
-function createGnome(string $body, string $author) {
+function createGnome($body, $author) {
   $gnome['body']   = $body;
   $gnome['author'] = $author;
   return $gnome;
