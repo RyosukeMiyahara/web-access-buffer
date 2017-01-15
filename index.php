@@ -22,6 +22,12 @@
 </head>
 <body>
 <?php
+      getWunderlistTodo();
+exit;
+?>
+
+
+<?php
 if (isset($_GET['url'])) {
 ?>
   <div align="center">
@@ -63,4 +69,38 @@ function showGnome(array $gnomes) {
   echo '  <div align="right"><p>' . $gnomes[$num]['author'] . '</p></div>';
   return;
 }
+
+
+
+
+
+function getWunderlistTodo() {
+    $client_id = "***";
+    $client_secret = "***";
+    $access_token = "***";
+
+    define('CALLBACK_URL', 'http://panda.holy.jp/web-access-buffer/');
+    define('LIST_URL', 'https://a.wunderlist.com/api/v1/lists');
+
+    $header = [
+        'X-Access-Token: ' . $access_token,
+        'X-Client-ID: ' . $client_id,
+    ];
+    
+    $curl = curl_init();
+
+    curl_setopt($curl, CURLOPT_URL, LIST_URL);
+    curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'GET');
+    curl_setopt($curl, CURLOPT_HTTPHEADER, $header);
+
+    $response = curl_exec($curl);
+    $header_size = curl_getinfo($culr, CURLINFO_HEADER_SIZE);
+    $header = substr($response, 0, $header_size);
+    $body = substr($response, $header_size);
+    $result = json_decode($body, true);
+    curl_close($curl);
+
+    echo "<pre>" . print_r($result) . "</pre>";
+}
+
 ?>
