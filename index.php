@@ -12,6 +12,15 @@
   <meta charset="UTF-8">
   <meta name="referrer" content="no-referrer">
   <title></title>
+
+  <!-- *** Style sheet start ***-->
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css" >
+  <!-- *** Style sheet end ***-->
+
+  <!-- *** javascript start ***-->
+  <script src="js/bootstrap.js"></script>
+  <!-- *** javascript end ***-->
+
 <?php
   if (isset($_GET['url'])) {
 ?>    
@@ -64,10 +73,14 @@ function createGnome($body, $author) {
 
 
 function showGnome(array $gnomes) {
-  $num = rand(0, count($gnomes) - 1);
-  echo '  <p>' . $gnomes[$num]['body']   . '</p>';
-  echo '  <div align="right"><p>' . $gnomes[$num]['author'] . '</p></div>';
-  return;
+    $num = rand(0, count($gnomes) - 1);
+    echo '<div class="panel panel-default">';
+    echo '<div class="panel-body">';
+    echo '  <p>' . $gnomes[$num]['body']   . '</p>';
+    echo '  <div align="right"><p>' . $gnomes[$num]['author'] . '</p></div>';
+    echo '</div>';
+    echo '</div>';
+    return;
 }
 
 
